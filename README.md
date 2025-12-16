@@ -23,6 +23,7 @@ This project provides a **public CAPTCHA generation API** and a **server-side va
 ## 📁 Project Structure
 
 
+```text
 free-image-captcha/
 ├── app/
 │   ├── page.jsx
@@ -31,15 +32,15 @@ free-image-captcha/
 │       │   └── route.js
 │       └── validate/
 │           └── route.js
-│
 ├── public/
 │   └── captcha-images/
 │       ├── Apple.png
 │       ├── Car.jpg
 │       └── House.jpeg
-│
 ├── package.json
 └── next.config.js
+```
+
 
 
 ---
