@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-
+const BASE_URL = "https://freeimagecaptcha.vercel.app";
 const captchas = [
   { file: "2en7g.png", answer: "2en7g" },
   { file: "325fb.png", answer: "325fb" },
@@ -42,7 +42,7 @@ export async function GET() {
 
   return NextResponse.json({
     captchaId,
-    image: `/captcha-images/${captcha.file}`,
+    image: `${BASE_URL}/captcha-images/${captcha.file}`,
   });
 }
 

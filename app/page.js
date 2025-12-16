@@ -1,4 +1,6 @@
 export default function Home() {
+  const BASE_URL = "https://freeimagecaptcha.vercel.app";
+
   return (
     <main style={{ padding: 40, fontFamily: "Arial", maxWidth: 900 }}>
       <h1>🛡️ Free Image CAPTCHA Generator API</h1>
@@ -12,17 +14,17 @@ export default function Home() {
       <hr />
 
       <h2>📌 Generate CAPTCHA</h2>
-      <pre>GET /api/captcha</pre>
+      <pre>GET {BASE_URL}/api/captcha</pre>
 
       <pre>
 {`{
   "captchaId": "uuid",
-  "image": "/captcha-images/Apple.png"
+  "image": "${BASE_URL}/captcha-images/Apple.png"
 }`}
       </pre>
 
       <h2>📌 Validate CAPTCHA</h2>
-      <pre>POST /api/validate</pre>
+      <pre>POST {BASE_URL}/api/validate</pre>
 
       <pre>
 {`{
@@ -37,7 +39,7 @@ export default function Home() {
         Input must match the image text exactly.
       </p>
 
-      <h2>📐 Image Dimensions</h2>
+      <h2>📐 Image Guidelines</h2>
       <ul>
         <li><b>Width:</b> 150–200px</li>
         <li><b>Height:</b> 50–80px</li>
@@ -50,12 +52,7 @@ export default function Home() {
       <h2>🧪 HTML Usage Example</h2>
 
       <pre>
-{`<img
-  id="captcha"
-  width="160"
-  height="60"
-  alt="captcha"
-/>
+{`<img id="captcha" width="160" height="60" alt="captcha" />
 
 <input
   type="text"
@@ -69,7 +66,7 @@ export default function Home() {
 <script>
 let captchaId = "";
 
-fetch('/api/captcha')
+fetch('${BASE_URL}/api/captcha')
   .then(res => res.json())
   .then(data => {
     captchaId = data.captchaId;
@@ -77,7 +74,7 @@ fetch('/api/captcha')
   });
 
 function verify() {
-  fetch('/api/validate', {
+  fetch('${BASE_URL}/api/validate', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -98,7 +95,7 @@ function verify() {
         <li>Next.js (App Router)</li>
         <li>JSX only</li>
         <li>Static images</li>
-        <li>Server-side validation</li>
+        <li>Fetch API</li>
       </ul>
 
       <p style={{ color: "#777" }}>
