@@ -1,6 +1,6 @@
 {
-  "name": "free-image-captcha",
-  "version": "0.1.0",
+  "name": "Captcha",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
