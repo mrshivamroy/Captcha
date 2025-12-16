@@ -31,7 +31,6 @@ const captchas = [
   { file: "xymfn.png", answer: "xymfn" },
 ];
 
-// In-memory store (demo purpose)
 const store = new Map();
 
 export async function GET() {
@@ -40,10 +39,26 @@ export async function GET() {
 
   store.set(captchaId, captcha.answer);
 
-  return NextResponse.json({
+  const res = NextResponse.json({
     captchaId,
-    image: `${BASE_URL}/captcha-images/${captcha.file}`,
+    image: `${BASE_URL}/captcha-images/${captcha.file}`
   });
+
+  // ⚡ Allow cross-origin requests
+  res.headers.set("Access-Control-Allow-Origin", "*");
+  res.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.headers.set("Access-Control-Allow-Headers", "*");
+
+  return res;
+}
+
+// Handle preflight requests
+export async function OPTIONS() {
+  const res = NextResponse.json({});
+  res.headers.set("Access-Control-Allow-Origin", "*");
+  res.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.headers.set("Access-Control-Allow-Headers", "*");
+  return res;
 }
 
 export { store };
