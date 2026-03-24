@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Force the base background to black */
+@layer base {
+  body {
+    background-color: #000;
+    color: #fff;
+  }
+}
